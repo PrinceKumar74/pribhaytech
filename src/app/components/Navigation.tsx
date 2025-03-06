@@ -299,14 +299,13 @@ const Navigation = () => {
       <nav>
         {/* Navigation container with dynamic background and smooth transition */}
         <div
-          className={`flex items-center justify-between ${
-            isScrolled ? "bg-white" : "bg-gray-900"
-          } p-3 transition-all duration-300 ease-in-out`}
+          className={`flex items-center justify-between ${isScrolled ? "bg-white" : "bg-gray-900"
+            } p-3 transition-all duration-300 ease-in-out`}
         >
           {/* Logo Section */}
           <Link href="/" className="ml-8">
             <Image
-              src="/image.png" // Path to the logo image
+              src="/images/logo.png" // Path to the logo image
               alt="Pribhaytech Logo" // Alt text for accessibility
               width={200} // Width of the logo
               height={50} // Height of the logo
@@ -316,9 +315,8 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden mr-5 ${
-              isScrolled ? "text-black" : "text-white"
-            } p-2 transition-colors duration-300 ease-in-out`}
+            className={`md:hidden mr-5 ${isScrolled ? "text-black" : "text-white"
+              } p-2 transition-colors duration-300 ease-in-out`}
             onClick={() => setIsMenuOpen(!isMenuOpen)} // Toggle mobile menu visibility
           >
             <Menu size={24} /> {/* Menu icon from Lucide React */}
@@ -346,9 +344,8 @@ const Navigation = () => {
                       {/* Main link to navigate to the parent page */}
                       <Link
                         href={item.path}
-                        className={`${
-                          isScrolled ? "text-black" : "text-white"
-                        } ${isActive ? "text-sky-500 " : ""} 
+                        className={`${isScrolled ? "text-black" : "text-white"
+                          } ${isActive ? "text-sky-500 " : ""} 
                            hover:text-sky-400 px-3 py-2 text-lg font-semibold transition-colors duration-300 ease-in-out`}
                       >
                         {item.name}
@@ -357,9 +354,8 @@ const Navigation = () => {
                       {/* Dropdown menu that appears on hover */}
                       {activeDropdown === item.name && (
                         <div
-                          className={`absolute top-full left-0 ${
-                            isScrolled ? "bg-white text-black" : "bg-gray-900 text-white"
-                          } 
+                          className={`absolute top-full left-0 ${isScrolled ? "bg-white text-black" : "bg-gray-900 text-white"
+                            } 
                             pt-2 rounded-lg shadow-xl min-w-[200px] z-50 transition-all duration-300 ease-in-out`}
                         >
                           {item.subItems.map((subItem) => {
@@ -370,15 +366,13 @@ const Navigation = () => {
                               <Link
                                 key={subItem.name}
                                 href={subItem.path}
-                                className={`block px-4 py-2 ${
-                                  isScrolled
+                                className={`block px-4 py-2 ${isScrolled
                                     ? "hover:bg-gray-200  hover:text-sky-400"
                                     : "hover:bg-gray-800 hover:text-white"
-                                } ${
-                                  isSubItemActive
+                                  } ${isSubItemActive
                                     ? "text-sky-500 hover:text-sky-500"
                                     : ""
-                                }  text-lg transition-colors duration-300 ease-in-out`}
+                                  }  text-lg transition-colors duration-300 ease-in-out`}
                               >
                                 {subItem.name}
                               </Link>
@@ -392,7 +386,7 @@ const Navigation = () => {
                     <Link
                       href={item.path}
                       className={`${isScrolled ? "text-black" : "text-white"} 
-                        ${pathname === item.path ? "text-sky-500":""}
+                        ${pathname === item.path ? "text-sky-500" : ""}
                        hover:text-sky-400 px-3 py-2 text-lg font-semibold transition-colors duration-300 ease-in-out`}
                     >
                       {item.name}
@@ -405,11 +399,10 @@ const Navigation = () => {
             {/* Contact Us Button */}
             <Link href="/contact">
               <button
-                className={`${
-                  isScrolled
+                className={`${isScrolled
                     ? "hover:bg-sky-600 border-sky-500"
                     : "hover:bg-gray-900"
-                } bg-sky-500 text-white w-[110px] py-2 rounded-xl text-lg font-medium  hover:border-white  border-2 transition-colors duration-300 ease-in-out`}
+                  } bg-sky-500 text-white w-[110px] py-2 rounded-xl text-lg font-medium  hover:border-white  border-2 transition-colors duration-300 ease-in-out`}
               >
                 Contact Us
               </button>
@@ -424,111 +417,106 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div
-            className={`md:hidden ${isScrolled ? "bg-white" : "bg-gray-900"} ${
-              isScrolled ? "text-black" : "text-white"
-            } p-4 space-y-2 transition-all duration-300 ease-in-out`}
+            className={`md:hidden ${isScrolled ? "bg-white" : "bg-gray-900"} ${isScrolled ? "text-black" : "text-white"
+              } p-4 space-y-2 transition-all duration-300 ease-in-out`}
           >
             {navItems.map((item) => {
 
 
               /* isActive  */
-               const isActive =
-               pathname === item.path ||
-               (item.subItems &&
-                 item.subItems.some((subItem) => pathname === subItem.path));
+              const isActive =
+                pathname === item.path ||
+                (item.subItems &&
+                  item.subItems.some((subItem) => pathname === subItem.path));
 
               return (
-              <div key={item.name}>
-                {/* If the item has subItems, show a collapsible dropdown */}
-                {item.subItems ? (
-                  <>
-                    {/* Split into two parts: Link and Plus Button */}
-                    <div className="flex justify-between items-center mb-2">
-                      {/* Link to navigate to the main page */}
-                      <Link
-                        href={item.path}
-                        className={`block p-2 ${
-                          isScrolled
-                            ? "hover:bg-slate-200"
-                            : "hover:bg-gray-800"
-                        } ${isActive? "text-sky-500":""} rounded-md flex-grow transition-colors duration-300 ease-in-out`}
-                        onClick={() => setIsMenuOpen(false)} // Close menu after navigation
-                      >
-                        {item.name}
-                      </Link>
-
-                      {/* Plus button to toggle the dropdown */}
-                      {/* HAVE TO SET LOGIC ALOK */}
-                      <button
-                        className={`p-2 ${
-                          isScrolled
-                            ? "hover:bg-slate-200"
-                            : "hover:bg-gray-800"
-                        } rounded-md transition-colors duration-300 ease-in-out`}
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering the Link click
-                          setActiveDropdown(
-                            activeDropdown === item.name ? null : item.name
-                          ); // Toggle the dropdown
-                        }}
-                      >
-                        <span
-                          className={`transform transition-transform ${
-                            activeDropdown === item.name ? "rotate-45" : ""
-                          }`}
+                <div key={item.name}>
+                  {/* If the item has subItems, show a collapsible dropdown */}
+                  {item.subItems ? (
+                    <>
+                      {/* Split into two parts: Link and Plus Button */}
+                      <div className="flex justify-between items-center mb-2">
+                        {/* Link to navigate to the main page */}
+                        <Link
+                          href={item.path}
+                          className={`block p-2 ${isScrolled
+                              ? "hover:bg-slate-200"
+                              : "hover:bg-gray-800"
+                            } ${isActive ? "text-sky-500" : ""} rounded-md flex-grow transition-colors duration-300 ease-in-out`}
+                          onClick={() => setIsMenuOpen(false)} // Close menu after navigation
                         >
-                          + {/* Plus sign for dropdown toggle */}
-                        </span>
-                      </button>
-                    </div>
+                          {item.name}
+                        </Link>
 
-                    {/* Dropdown menu that appears when toggled */}
-                    {activeDropdown === item.name && (
-                      <div className="ml-4 space-y-2">
-                        {item.subItems.map((subItem) =>{
-
-                          /* isSubItemActive */
-                          const isSubItemActive = pathname === subItem.path;
-                          return  (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.path}
-                            className={`block p-2 ${
-                              isScrolled
-                                ? "hover:bg-gray-200 hover:text-black"
-                                : "hover:bg-gray-800 hover:text-white"
-                            } ${isSubItemActive?"text-sky-500 hover:text-sky-500" : ""} rounded-md text-lg transition-colors duration-300 ease-in-out`}
-                            onClick={() => setIsMenuOpen(false)} // Close menu after navigation
+                        {/* Plus button to toggle the dropdown */}
+                        {/* HAVE TO SET LOGIC ALOK */}
+                        <button
+                          className={`p-2 ${isScrolled
+                              ? "hover:bg-slate-200"
+                              : "hover:bg-gray-800"
+                            } rounded-md transition-colors duration-300 ease-in-out`}
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevent triggering the Link click
+                            setActiveDropdown(
+                              activeDropdown === item.name ? null : item.name
+                            ); // Toggle the dropdown
+                          }}
+                        >
+                          <span
+                            className={`transform transition-transform ${activeDropdown === item.name ? "rotate-45" : ""
+                              }`}
                           >
-                            {subItem.name}
-                          </Link>
-                        )})}
+                            + {/* Plus sign for dropdown toggle */}
+                          </span>
+                        </button>
                       </div>
-                    )}
-                  </>
-                ) : (
-                  // If no subItems, just display a simple link
-                  <Link
-                    href={item.path}
-                    className={`${
-                      isScrolled ? "hover:bg-slate-200" : "hover:bg-gray:200"
-                    } ${pathname === item.path ? "text-sky-500":""} block p-2 hover:bg-gray-800 rounded-md transition-colors duration-300 ease-in-out`}
-                    onClick={() => setIsMenuOpen(false)} // Close menu after navigation
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
-            )})}
+
+                      {/* Dropdown menu that appears when toggled */}
+                      {activeDropdown === item.name && (
+                        <div className="ml-4 space-y-2">
+                          {item.subItems.map((subItem) => {
+
+                            /* isSubItemActive */
+                            const isSubItemActive = pathname === subItem.path;
+                            return (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.path}
+                                className={`block p-2 ${isScrolled
+                                    ? "hover:bg-gray-200 hover:text-black"
+                                    : "hover:bg-gray-800 hover:text-white"
+                                  } ${isSubItemActive ? "text-sky-500 hover:text-sky-500" : ""} rounded-md text-lg transition-colors duration-300 ease-in-out`}
+                                onClick={() => setIsMenuOpen(false)} // Close menu after navigation
+                              >
+                                {subItem.name}
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    // If no subItems, just display a simple link
+                    <Link
+                      href={item.path}
+                      className={`${isScrolled ? "hover:bg-slate-200" : "hover:bg-gray:200"
+                        } ${pathname === item.path ? "text-sky-500" : ""} block p-2 hover:bg-gray-800 rounded-md transition-colors duration-300 ease-in-out`}
+                      onClick={() => setIsMenuOpen(false)} // Close menu after navigation
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
+              )
+            })}
 
             {/* Contact Us Button in Mobile View */}
             <Link href="/contact">
               <button
-                className={`${
-                  isScrolled
+                className={`${isScrolled
                     ? "hover:bg-sky-500 border-sky-600"
                     : "hover:bg-gray-900 border-2 border-white"
-                } w-full bg-sky-400 text-white py-2 rounded-xl text-lg font-medium  transition-colors duration-300 ease-in-out`}
+                  } w-full bg-sky-400 text-white py-2 rounded-xl text-lg font-medium  transition-colors duration-300 ease-in-out`}
               >
                 Contact Us
               </button>
