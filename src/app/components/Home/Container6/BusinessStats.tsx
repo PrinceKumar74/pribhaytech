@@ -5,9 +5,9 @@ import { People, Event, Groups } from "@mui/icons-material";
 import ReviewsIcon from '@mui/icons-material/Reviews';
 
 const stats = [
-  { icon: <People className="text-sky-400" style={{ fontSize: "49px" }} />, value: 500, label: "Happy Clients" },
-  { icon: <Groups className="text-sky-400" style={{ fontSize: "49px" }} />, value: 50, label: "Creative Brains" },
-  { icon: <Event className="text-sky-400" style={{ fontSize: "49px" }} />, value: 35, label: "Content Creator" },
+  { icon: <People className="text-sky-400" style={{ fontSize: "49px" }} />, value: 400, label: "Happy Clients" },
+  { icon: <Groups className="text-sky-400" style={{ fontSize: "49px" }} />, value: 55, label: "Creative Brains" },
+  { icon: <Event className="text-sky-400" style={{ fontSize: "49px" }} />, value: 33, label: "Content Creator" },
   { icon: <ReviewsIcon className="text-sky-400" style={{ fontSize: "49px" }} />, value: 150, label: "Reviews" },
 ];
 
