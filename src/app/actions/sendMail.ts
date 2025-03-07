@@ -6,7 +6,7 @@ import { SubscribeDetails } from "@/types/mail-form";
 
 export const sendMail = async (subscribeData: SubscribeDetails) => {
   try {
-    // Validate the form data
+    // Validate form data
     subscribeFormSchema.parse(subscribeData);
 
     // Nodemailer setup
@@ -19,23 +19,19 @@ export const sendMail = async (subscribeData: SubscribeDetails) => {
     });
 
     const mailOptions = {
-      from: subscribeData.email,
+      from: `"Subscriber" <${subscribeData.email}>`,
       to: process.env.MAIL_RECEIVER_ADDRESS,
       subject: "Subscribe Form Submission",
-      text: `Email: ${subscribeData.email}`,
-      html: "",
+      text: `New subscription from: ${subscribeData.email}`,
+      html: `<p><strong>Email:</strong> ${subscribeData.email}</p>`,
     };
 
-    // Send Email
+    // Send email
     await transporter.sendMail(mailOptions);
-    return {
-      success: true,
-      error: null,
-    };
+
+    return { success: true, error: null };
   } catch (error) {
-    return {
-      success: false,
-      error: getErrorMessage(error),
-    };
+    console.error("Error sending email:", error);
+    return { success: false, error: getErrorMessage(error) };
   }
 };
